@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tend | Plant care</title>
+  <meta name="description" content="A calmer way to remember when your plants need water.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#garden" aria-label="Tend home">
+      <span class="brand-mark" aria-hidden="true">T</span>
+      <span id="brand-name">Tend</span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="#garden">My plants</a>
+      <a href="#business">Business idea</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="garden" data-view>
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow" id="today-label">YOUR GARDEN</p>
+          <h1>Plant care, in order.</h1>
+          <p class="lead">The next thing to do is always at the top.</p>
+        </div>
+        <button class="button" id="add-plant" type="button"><span aria-hidden="true">+</span> Add a plant</button>
+      </div>
+
+      <section class="summary-strip" aria-label="Garden summary">
+        <div class="summary-item"><span class="summary-value" id="plant-count">0</span><span class="summary-label">In your garden</span></div>
+        <div class="summary-item"><span class="summary-value" id="due-count">0</span><span class="summary-label">Need water</span></div>
+        <div class="summary-item"><span class="summary-value" id="overdue-count">0</span><span class="summary-label">Overdue</span></div>
+        <p class="summary-note">A quick check-in is all it takes.</p>
+      </section>
+
+      <div class="dashboard-grid">
+        <section class="care-panel" aria-labelledby="queue-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">WATERING QUEUE</p>
+              <h2 id="queue-title">What needs your attention</h2>
+            </div>
+            <div class="filters" role="group" aria-label="Filter plants">
+              <button type="button" data-filter="all" aria-pressed="true">All</button>
+              <button type="button" data-filter="due" aria-pressed="false">Need water</button>
+              <button type="button" data-filter="upcoming" aria-pressed="false">Upcoming</button>
+            </div>
+          </div>
+          <div class="plant-list" id="plant-list" aria-live="polite"></div>
+          <div class="empty-state" id="empty-state" hidden>
+            <p class="empty-title" id="empty-title">A little room to grow.</p>
+            <p id="empty-copy">Add your first plant and its watering rhythm to get started.</p>
+            <button class="text-button" id="empty-add" type="button">+ Add a plant</button>
+          </div>
+        </section>
+
+        <aside class="garden-aside">
+          <img class="plant-photo" src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Sunlit green leaves of a healthy houseplant">
+          <p class="eyebrow aside-eyebrow">GROW AT YOUR OWN PACE</p>
+          <h2>Good care isn't perfect care.</h2>
+          <p>Plants have different rhythms. Tend helps you keep track of yours, one small check-in at a time.</p>
+          <a class="inline-link" href="#business">How this could grow as a business <span aria-hidden="true">&gt;</span></a>
+        </aside>
+      </div>
+    </section>
+
+    <section id="business" data-view hidden>
+      <div class="business-heading">
+        <p class="eyebrow">THE BUSINESS IDEA</p>
+        <h1>Useful first. Revenue second.</h1>
+        <p class="lead">Earn trust with a genuinely helpful free product, then charge for extra convenience.</p>
+      </div>
+
+      <section class="recommendation" aria-label="Recommended monetization strategy">
+        <span class="recommendation-mark" aria-hidden="true">OK</span>
+        <div>
+          <p class="eyebrow">RECOMMENDATION</p>
+          <h2>Skip ads at launch. Test a paid upgrade.</h2>
+          <p>Watering reminders are a quick, personal task. Ads would interrupt the habit and likely earn little before the app has a large, engaged audience.</p>
+        </div>
+      </section>
+
+      <div class="model-grid">
+        <section class="model-section">
+          <p class="model-number">01</p>
+          <h2>Free care basics</h2>
+          <p>Keep plant tracking and watering priorities free. That makes it easy to try and gives people a reason to return.</p>
+          <p class="model-note">The habit is the product's foundation.</p>
+        </section>
+        <section class="model-section model-featured">
+          <p class="model-number">02 - BEST FIRST TEST</p>
+          <h2>Optional Tend Plus</h2>
+          <p>Test a modest subscription for shared household care, care history, vacation plans, and more detailed plant guides.</p>
+          <p class="model-note">Validate willingness to pay before building it.</p>
+        </section>
+        <section class="model-section">
+          <p class="model-number">03 - LATER</p>
+          <h2>Plant sitters</h2>
+          <p>A local sitter marketplace could take a booking fee, especially for trips. Start by testing demand in one community.</p>
+          <p class="model-note">Trust, availability, support, and safe payments make this much harder.</p>
+        </section>
+      </div>
+      <p class="prototype-note">This is a student prototype. Upgrade purchases and sitter bookings are ideas only; no payments or bookings are processed.</p>
+    </section>
+  </main>
+
+  <dialog id="plant-dialog" aria-labelledby="dialog-title">
+    <form id="plant-form">
+      <div class="dialog-heading">
+        <div>
+          <p class="eyebrow">MAKE ROOM TO GROW</p>
+          <h2 id="dialog-title">Add a plant</h2>
+        </div>
+        <button class="icon-button" id="close-dialog" type="button" aria-label="Close">x</button>
+      </div>
+      <label class="field">Plant name<input id="plant-name" name="name" type="text" placeholder="e.g. Monstera" maxlength="50" required></label>
+      <label class="field">Plant type <span class="optional">optional</span><input id="plant-species" name="species" type="text" placeholder="e.g. Monstera deliciosa" maxlength="70"></label>
+      <div class="field-row">
+        <label class="field">Water every<input id="plant-interval" name="interval" type="number" min="1" max="365" value="7" required><span class="field-suffix">days</span></label>
+        <label class="field">Last watered<input id="plant-last-watered" name="lastWatered" type="date" required></label>
+      </div>
+      <div class="dialog-actions">
+        <button class="button button-quiet" id="cancel-dialog" type="button">Cancel</button>
+        <button class="button" type="submit">Add to my garden</button>
+      </div>
+    </form>
+  </dialog>
+
+  <footer class="site-footer">
+    <p>Student prototype for BSAD 281 at St. Francis Xavier University. Plant data stays in this browser; watering dates appear when you open Tend, and background notifications are not enabled.</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
